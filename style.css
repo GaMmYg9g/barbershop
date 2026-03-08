@@ -1,0 +1,551 @@
+/* ===== VARIABLES ===== */
+:root {
+  --negro: #1a1a1a;
+  --azul: #2a7fba;
+  --rojo: #c0392b;
+  --blanco: #f9f9f9;
+  --gris-claro: #eaeaea;
+  --sombra: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: var(--blanco);
+  color: var(--negro);
+  line-height: 1.6;
+}
+
+/* ===== HEADER ===== */
+.barber-header {
+  background-color: var(--negro);
+  color: var(--blanco);
+  padding: 1.5rem 1rem;
+  text-align: center;
+  border-bottom: 4px solid var(--rojo);
+}
+
+.barber-header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--blanco);
+}
+
+.barber-header h1 i {
+  color: var(--rojo);
+  margin-right: 10px;
+}
+
+.barber-header .horarios,
+.barber-header .direccion {
+  font-size: 1rem;
+  opacity: 0.9;
+  margin: 0.2rem 0;
+}
+
+.barber-header i {
+  margin-right: 8px;
+  color: var(--azul);
+}
+
+/* ===== CONTENEDOR PRINCIPAL ===== */
+.container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* ===== SECCIONES ===== */
+section {
+  background: white;
+  border-radius: 12px;
+  box-shadow: var(--sombra);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+section h2 {
+  color: var(--negro);
+  border-bottom: 2px solid var(--rojo);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+section h2 i {
+  color: var(--azul);
+  margin-right: 8px;
+}
+
+/* ===== SERVICIOS (GRID) ===== */
+.servicios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.servicio-item {
+  background: var(--gris-claro);
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.servicio-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--sombra);
+}
+
+.servicio-item.seleccionado {
+  border-color: var(--azul);
+  background: #d4e6f1;
+}
+
+.servicio-item input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--azul);
+  cursor: pointer;
+}
+
+.servicio-info {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+}
+
+.servicio-precio {
+  color: var(--rojo);
+  font-weight: 700;
+}
+
+/* ===== EXTRAS (mismo estilo que servicios) ===== */
+.extras-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.extra-item {
+  background: var(--gris-claro);
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.extra-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--sombra);
+}
+
+.extra-item.seleccionado {
+  border-color: var(--azul);
+  background: #d4e6f1;
+}
+
+.extra-item input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--azul);
+  cursor: pointer;
+}
+
+.extra-info {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+}
+
+/* Separar el precio del texto */
+.extra-precio {
+  color: var(--rojo);
+  margin-left: 10px; /* Espacio para separar del texto */
+  white-space: nowrap; /* Evita que el precio se parta en dos líneas */
+}
+
+/* ===== RESUMEN ===== */
+#resumen-lista {
+  margin-bottom: 1rem;
+}
+
+.resumen-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px dashed var(--gris-claro);
+}
+
+.total-line {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding-top: 1rem;
+  border-top: 2px solid var(--negro);
+  margin-top: 0.5rem;
+}
+
+.total-line span:last-child {
+  color: var(--rojo);
+}
+
+/* ===== FORMULARIO ===== */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+  color: var(--negro);
+}
+
+input, textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 2px solid var(--gris-claro);
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border 0.2s;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--azul);
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* ===== SELECTOR DE ZONAS ===== */
+.zona-selector {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: var(--sombra);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.zona-selector label {
+  font-weight: 600;
+  color: var(--negro);
+  margin-bottom: 0;
+}
+
+.zona-select {
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--gris-claro);
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: white;
+  cursor: pointer;
+  flex: 1;
+  min-width: 150px;
+}
+
+.zona-select:focus {
+  outline: none;
+  border-color: var(--azul);
+}
+
+/* Asegurar que el selector se vea bien en móvil */
+@media (max-width: 600px) {
+  .zona-selector {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .zona-select {
+    width: 100%;
+  }
+}
+
+/* ===== CONDICIONAL ===== */
+.hidden {
+  display: none !important;
+}
+
+/* ===== BOTÓN WHATSAPP ===== */
+.accion {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.btn-whatsapp {
+  background-color: #25D366;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 1rem 2.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: background-color 0.3s, transform 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-whatsapp:hover {
+  background-color: #128C7E;
+  transform: scale(1.02);
+}
+
+.btn-whatsapp i {
+  font-size: 1.5rem;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .servicios-grid,
+  .extras-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== ESTILOS PARA CAMPOS DE FECHA Y HORA ===== */
+input[type="date"],
+input[type="time"] {
+  appearance: none;               /* Elimina estilos nativos en algunos navegadores */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: white;
+  border: 2px solid var(--gris-claro);
+  border-radius: 6px;
+  padding: 0.8rem;
+  font-size: 1rem;
+  font-family: inherit;
+  color: var(--negro);
+  width: 100%;
+  box-sizing: border-box;
+  transition: border 0.2s;
+  line-height: normal;
+}
+
+/* Estilo para el ícono del calendario/reloj (solo WebKit/Blink) */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.5);            /* Oscurece el ícono para que no desentone */
+  cursor: pointer;
+}
+
+/* Efecto de foco */
+input[type="date"]:focus,
+input[type="time"]:focus {
+  outline: none;
+  border-color: var(--azul);
+}
+
+/* Ajuste específico para Firefox (si el padding se ve diferente) */
+@-moz-document url-prefix() {
+  input[type="date"],
+  input[type="time"] {
+    padding: 0.7rem;              /* Pequeño ajuste para Firefox */
+  }
+}
+
+/* ===== SELECTORES PERSONALIZADOS ===== */
+.custom-input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 2px solid var(--gris-claro);
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: white;
+  cursor: pointer;
+  transition: border 0.2s;
+  color: var(--negro);
+  box-sizing: border-box;
+  min-height: 44px; /* Altura similar a los inputs */
+  display: flex;
+  align-items: center;
+}
+
+.custom-input:focus {
+  outline: none;
+  border-color: var(--azul);
+}
+
+.custom-input.active {
+  border-color: var(--azul);
+  box-shadow: 0 0 0 2px rgba(42, 127, 186, 0.2);
+}
+
+.picker-container {
+  position: absolute;
+  z-index: 1000;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  margin-top: 4px;
+  border: 1px solid var(--gris-claro);
+  overflow: hidden;
+  width: 280px; /* Ancho fijo para calendario y hora */
+}
+
+.date-picker {
+  width: 280px;
+  padding: 1rem;
+}
+
+.time-picker {
+  width: 150px;
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+/* Calendario */
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  color: var(--negro);
+}
+
+.calendar-month {
+  font-weight: bold;
+  color: var(--azul);
+}
+
+.calendar-nav {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.calendar-nav button {
+  background: var(--gris-claro);
+  border: none;
+  border-radius: 4px;
+  padding: 0.3rem 0.8rem;
+  cursor: pointer;
+  font-weight: bold;
+  color: var(--negro);
+  transition: background 0.2s;
+}
+
+.calendar-nav button:hover {
+  background: var(--azul);
+  color: white;
+}
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-weight: bold;
+  color: var(--rojo);
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.calendar-day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--blanco);
+  border: 1px solid var(--gris-claro);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s, color 0.2s;
+  color: var(--negro);
+}
+
+.calendar-day:hover {
+  background: var(--azul);
+  color: white;
+  border-color: var(--azul);
+}
+
+.calendar-day.empty {
+  background: transparent;
+  border: none;
+  cursor: default;
+}
+
+.calendar-day.selected {
+  background: var(--rojo);
+  color: white;
+  border-color: var(--rojo);
+}
+
+/* Lista de horas */
+.time-option {
+  padding: 0.8rem;
+  text-align: center;
+  cursor: pointer;
+  border-bottom: 1px solid var(--gris-claro);
+  transition: background 0.2s;
+  color: var(--negro);
+}
+
+.time-option:hover {
+  background: var(--azul);
+  color: white;
+}
+
+.time-option.selected {
+  background: var(--rojo);
+  color: white;
+}
+
+.time-option:last-child {
+  border-bottom: none;
+}
+
+/* Inputs ocultos */
+.hidden-input {
+  display: none;
+}
+
+/* Ajuste de posicionamiento relativo para los contenedores de los pickers */
+.custom-date-group, .custom-time-group {
+  position: relative;
+}

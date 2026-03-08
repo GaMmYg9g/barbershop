@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>💈BarberShop💈</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <!-- Font Awesome para iconos (opcional) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <header class="barber-header">
+    <h1><i class="fas fa-cut"></i> <span id="tienda-nombre">Barbería</span></h1>
+    <p class="horarios"><i class="far fa-clock"></i> <span id="tienda-horarios"></span></p>
+    <p class="direccion"><i class="fas fa-map-marker-alt"></i> <span id="tienda-direccion"></span></p>
+  </header>
+
+  <main class="container">
+    <!-- Sección de servicios (precios) -->
+    <section class="servicios-section">
+      <h2><i class="fas fa-list"></i> Ofertas</h2>
+      <div id="servicios-container" class="servicios-grid"></div>
+    </section>
+
+    <!-- Extras: domicilio y reserva -->
+    <section class="extras-section">
+      <h2><i class="fas fa-plus-circle"></i> Servicio Extra</h2>
+      <div id="extras-grid" class="extras-grid"></div>
+      <!-- Contenedor para el selector de zonas de domicilio (se muestra condicionalmente) -->
+      <div id="domicilio-zona-container" class="zona-selector hidden">
+        <label for="zona-domicilio">Zona de domicilio:</label>
+        <select id="zona-domicilio" class="zona-select"></select>
+      </div>
+    </section>
+
+    <!-- Resumen y total -->
+    <section class="resumen-section">
+      <h2><i class="fas fa-receipt"></i> Pedido</h2>
+      <div id="resumen-lista"></div>
+      <div class="total-line">
+        <span>Total:</span>
+        <span id="total-precio">$0</span>
+      </div>
+    </section>
+
+    <!-- Formulario de reserva / pedido -->
+    <section class="formulario-section">
+      <h2><i class="fas fa-user"></i> Perfil y Datos</h2>
+      <form id="pedido-form">
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" required placeholder="Ej: Juan Pérez">
+        </div>
+        <div class="form-group">
+          <label for="movil">Móvil</label>
+          <input type="tel" id="movil" required placeholder="Ej: 5512345678">
+        </div>
+
+        <!-- Grupo condicional de fecha y hora (solo visible si hay reserva o domicilio) -->
+        <div id="datetime-group" class="conditional-fields hidden">
+          <div class="form-row">
+            <!-- Campo de fecha personalizado -->
+            <div class="form-group custom-date-group">
+              <label for="custom-fecha">Fecha *</label>
+              <div class="custom-input" id="custom-fecha" tabindex="0">Seleccionar fecha</div>
+              <div class="picker-container date-picker hidden" id="date-picker">
+                <!-- Calendario generado por JS -->
+              </div>
+            </div>
+            <!-- Campo de hora personalizado -->
+            <div class="form-group custom-time-group">
+              <label for="custom-hora">Hora *</label>
+              <div class="custom-input" id="custom-hora" tabindex="0">Seleccionar hora</div>
+              <div class="picker-container time-picker hidden" id="time-picker">
+                <!-- Lista de horas generada por JS -->
+              </div>
+            </div>
+          </div>
+          <!-- Inputs ocultos para mantener compatibilidad con la lógica existente -->
+          <input type="date" id="fecha" class="hidden-input">
+          <input type="time" id="hora" class="hidden-input">
+        </div>
+
+        <div class="form-group">
+          <label for="nota">Notas</label>
+          <textarea id="nota" rows="2" placeholder="Alguna indicación especial..."></textarea>
+        </div>
+      </form>
+    </section>
+
+    <!-- Botón de envío por WhatsApp -->
+    <div class="accion">
+      <button id="enviar-whatsapp" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> Enviar pedido por WhatsApp</button>
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="precios.js"></script>
+  <script src="app.js"></script>
+  <!-- Registro del Service Worker (para PWA) -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js')
+          .then(reg => console.log('SW registrado:', reg.scope))
+          .catch(err => console.log('Error al registrar SW:', err));
+      });
+    }
+  </script>
+</body>
+</html>
