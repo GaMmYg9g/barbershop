@@ -1,7 +1,7 @@
 const BARBER_CONFIG = {
   tienda: {
     nombre: "BarberShop 💈",
-    telefono: "5356502201",
+    telefono: "5351635796",
     horarios: "Horario Abierto",
     direccion: "Calle Futura 1||2 #106 Rpto. Ortíz"
   },
